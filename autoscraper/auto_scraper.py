@@ -174,6 +174,14 @@ class AutoScraper(object):
             x for x in children if self._child_has_text(x, text, url, text_fuzz_ratio)
         ]
         return children
+    
+ 
+    def _get_sibling(self, soup, text, url, text_fuzz_ratio):
+        sibling = reversed(soup.findChildren())
+        siblings = [
+            x for x in sibling if self._child_has_text(x, text, url, text_fuzz_ratio)
+        ]
+        return siblings
 
     def build(
         self,
